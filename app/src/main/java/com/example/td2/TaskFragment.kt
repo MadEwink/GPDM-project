@@ -6,12 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_task.view.*
 import kotlinx.android.synthetic.main.task_fragment.view.*
 
 class TaskFragment : Fragment() {
-    private val tasks = listOf("Task 1", "Task 2", "Task 3")
+
+    private val tasks = listOf(
+        Task(id=0, title="Faire Cuire une Banane", description = "La banane se mange cuite au four à 259.87°F"),
+        Task(id=1, title="Finir Android")
+    )
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class TaskAdapter(private val tasks: List<String>) : RecyclerView.Adapter<TaskViewHolder>()  {
+class TaskAdapter(private val tasks: List<Task>) : RecyclerView.Adapter<TaskViewHolder>()  {
     override fun getItemCount(): Int {
         return tasks.size
     }
