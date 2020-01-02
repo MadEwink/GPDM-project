@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">td2</string>
     <string name="task_header_title">Task Header</string>
+    <string name="destroy_button">Delete Task</string>
 </resources>
