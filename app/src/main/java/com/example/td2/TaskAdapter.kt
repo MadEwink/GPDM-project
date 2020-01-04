@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_task.view.*
 
@@ -26,7 +27,7 @@ class TaskAdapter(private val tasks: List<Task>) : RecyclerView.Adapter<TaskAdap
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         holder.bind(tasks[position])
         val buttonDelete : Button = holder.itemView.task_delete
-        buttonDelete.setOnClickListener(onDeleteClickListener)
+        buttonDelete.setOnClickListener {v->onDeleteClickListener(tasks[position])}
     }
 
     var onDeleteClickListener : (Task) -> Unit = {}
