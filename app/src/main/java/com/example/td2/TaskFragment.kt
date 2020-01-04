@@ -41,4 +41,9 @@ class TaskFragment : Fragment() {
         taskViewModel.deleteTask(task)
     }
 
+    override fun onResume() {
+        super.onResume()
+        taskViewModel.loadTasks()
+    }
+
 }

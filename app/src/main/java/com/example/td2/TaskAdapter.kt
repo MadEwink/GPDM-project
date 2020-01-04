@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_task.view.*
 
-class TaskAdapter(private val tasks: List<Task>, private val onDeleteClickListener: (Task)->Unit) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>()  {
+class TaskAdapter(val tasks: List<Task>, private val onDeleteClickListener: (Task)->Unit) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>()  {
     inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(task:Task) {
             itemView.task_title.text = task.title

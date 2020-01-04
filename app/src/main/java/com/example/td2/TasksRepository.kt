@@ -17,9 +17,24 @@ class TasksRepository {
         return tasks
     }
 
-    private suspend fun loadTasks(): List<Task>? {
+    suspend fun loadTasks(): List<Task>? {
         val tasksResponse = tasksService.getTasks()
         Log.e("loadTasks", tasksResponse.toString())
         return if (tasksResponse.isSuccessful) tasksResponse.body() else null
+    }
+
+    suspend fun deleteTask(task:Task) : Boolean {
+        val response = tasksService.deleteTask(task.id)
+        return response.isSuccessful
+    }
+
+    suspend fun createTask(task:Task) : Boolean {
+        val response = tasksService.createTask(task)
+        return response.isSuccessful
+    }
+
+    suspend fun editTask(task:Task) : Boolean {
+        val response = tasksService.updateTask(task)
+        return response.isSuccessful
     }
 }
