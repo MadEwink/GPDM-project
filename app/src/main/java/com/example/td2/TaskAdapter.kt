@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_task.view.*
 
-class TaskAdapter(private val tasks: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>()  {
+class TaskAdapter(private val tasks: List<Task>, private val onDeleteClickListener: (Task)->Unit) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>()  {
     inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(task:Task) {
             itemView.task_title.text = task.title
@@ -29,6 +29,4 @@ class TaskAdapter(private val tasks: List<Task>) : RecyclerView.Adapter<TaskAdap
         val buttonDelete : Button = holder.itemView.task_delete
         buttonDelete.setOnClickListener {v->onDeleteClickListener(tasks[position])}
     }
-
-    var onDeleteClickListener : (Task) -> Unit = {}
 }
