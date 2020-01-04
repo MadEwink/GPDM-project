@@ -1,5 +1,15 @@
 package com.example.td2
 
-data class Task (val id : String, var title : String, var description : String =  "Empty task"){
+import com.squareup.moshi.Json
+
+data class Task (
+    @field:Json(name = "id")
+    val id : String,
+    @field:Json(name = "title")
+    var title : String,
+    @field:Json(name = "description")
+    var description : String =  "Empty task"
+    )
+{
 
 }

@@ -2,7 +2,7 @@ package com.example.td2
 
 import androidx.lifecycle.ViewModel
 
-class TaskViewModel : ViewModel() {
+class TaskViewModel(val taskAdapter: TaskAdapter) : ViewModel() {
     companion object {
         private val tasks = mutableListOf(
             Task(
@@ -21,9 +21,7 @@ class TaskViewModel : ViewModel() {
         )
     }
 
-    val taskAdapter = TaskAdapter(tasks) {task : Task -> deleteTask(task)}
-
-    private fun deleteTask(task : Task)
+    fun deleteTask(task : Task)
     {
         tasks.remove(task)
         taskAdapter.notifyDataSetChanged()
