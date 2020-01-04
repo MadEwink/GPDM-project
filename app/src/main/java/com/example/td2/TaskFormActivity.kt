@@ -17,9 +17,9 @@ class TaskFormActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        confirm_form.setOnClickListener {v -> createTask(); backToMain()}
-        back_to_main.setOnClickListener {v -> backToMain()}
+        setContentView(R.layout.activity_taskform)
+        confirm_form.setOnClickListener {createTask(); backToMain()}
+        back_to_main.setOnClickListener {backToMain()}
     }
 
     private fun createTask(){

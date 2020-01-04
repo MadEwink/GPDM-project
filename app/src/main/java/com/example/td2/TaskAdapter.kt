@@ -14,7 +14,6 @@ class TaskAdapter(private val tasks: List<Task>, private val onDeleteClickListen
             itemView.task_title.text = task.title
             itemView.task_description.text = task.description
         }
-        //ondeleteclicklistener.invoke
     }
     override fun getItemCount(): Int {
         return tasks.size
@@ -27,6 +26,6 @@ class TaskAdapter(private val tasks: List<Task>, private val onDeleteClickListen
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         holder.bind(tasks[position])
         val buttonDelete : Button = holder.itemView.task_delete
-        buttonDelete.setOnClickListener {v->onDeleteClickListener(tasks[position])}
+        buttonDelete.setOnClickListener {onDeleteClickListener(tasks[position])}
     }
 }
