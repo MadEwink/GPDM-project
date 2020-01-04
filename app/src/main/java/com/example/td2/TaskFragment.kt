@@ -24,7 +24,7 @@ class TaskFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val adapter = TaskAdapter(tasks)
-        adapter.onDeleteClickListener = { task -> tasks.remove(task)} //take arg and see
+        adapter.onDeleteClickListener = { task -> tasks.remove(task); adapter.notifyDataSetChanged()}
         val view = inflater.inflate(R.layout.task_fragment, container,false)
         view.tasks_recycler_view.adapter = adapter
         view.tasks_recycler_view.layoutManager = LinearLayoutManager(context)
