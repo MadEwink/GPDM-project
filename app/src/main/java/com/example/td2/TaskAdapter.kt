@@ -1,5 +1,6 @@
 package com.example.td2
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,13 @@ class TaskAdapter(private val tasks: List<Task>, private val onDeleteClickListen
             itemView.task_title.text = task.title
             itemView.task_description.text = task.description
         }
+        fun onEditClickListener(task: Task) {
+            val intent = Intent(itemView.context, TaskFormActivity::class.java)
+            intent.putExtra("id", task.id)
+            intent.putExtra("title", task.title)
+            intent.putExtra("description", task.description)
+            itemView.context.startActivity(intent)
+        }
     }
     override fun getItemCount(): Int {
         return tasks.size
@@ -23,9 +31,12 @@ class TaskAdapter(private val tasks: List<Task>, private val onDeleteClickListen
         return TaskViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_task,parent,false))
     }
 
+
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         holder.bind(tasks[position])
         val buttonDelete : Button = holder.itemView.task_delete
         buttonDelete.setOnClickListener {onDeleteClickListener(tasks[position])}
+        val buttonEdit : Button = holder.itemView.task_edit
+        buttonEdit.setOnClickListener {holder.onEditClickListener(tasks[position])}
     }
 }

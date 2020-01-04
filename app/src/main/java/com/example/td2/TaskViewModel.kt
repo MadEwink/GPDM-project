@@ -35,4 +35,12 @@ class TaskViewModel : ViewModel() {
         taskAdapter.notifyDataSetChanged()
     }
 
+    fun editTask(task: Task)
+    {
+        var task_to_update = tasks.find { oldtask -> oldtask.id == task.id }
+        task_to_update?.title = task.title
+        task_to_update?.description = task.description
+        taskAdapter.notifyDataSetChanged()
+    }
+
 }

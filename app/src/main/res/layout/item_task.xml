@@ -16,11 +16,22 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp" />
-    <Button
-        android:id="@+id/task_delete"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/destroy_button"
-        />
+        >
+        <Button
+            android:id="@+id/task_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/destroy_button"
+            />
+        <Button
+            android:id="@+id/task_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_button"
+            />
+    </LinearLayout>
 
 </LinearLayout>
