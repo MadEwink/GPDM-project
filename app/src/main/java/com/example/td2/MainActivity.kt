@@ -11,7 +11,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        button_addTask.setOnClickListener {v -> val intent = Intent(this,TaskFormActivity::class.java); startActivity(intent)}
+        button_addTask.setOnClickListener {v -> taskForm()}
     }
 
+    private fun taskForm() {
+        val intent = Intent(this,TaskFormActivity::class.java)
+        startActivity(intent)
+    }
 }
