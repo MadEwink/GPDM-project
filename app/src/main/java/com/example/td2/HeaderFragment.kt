@@ -26,7 +26,7 @@ class HeaderFragment : Fragment() {
         super.onResume()
         coroutineScope.launch {
             val userInfo = Api.userService.getInfo().body()
-            var greetName = "Hi "+userInfo?.firstName+" "+userInfo?.lastName
+            var greetName = "Hi "+userInfo?.firstname+" "+userInfo?.lastname
             user_name.text =greetName
         }
     }
