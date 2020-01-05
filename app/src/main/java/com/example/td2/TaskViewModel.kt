@@ -4,10 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class TaskViewModel(val taskAdapter: TaskAdapter) : ViewModel() {
+class TaskViewModel : ViewModel() {
 
     private val repository = TasksRepository()
     private val tasks = mutableListOf<Task>()
+    val taskAdapter = TaskAdapter(tasks) {task: Task -> deleteTask(task) }
 
     fun deleteTask(task : Task)
     {
@@ -32,7 +33,7 @@ class TaskViewModel(val taskAdapter: TaskAdapter) : ViewModel() {
     fun editTask(task: Task)
     {
         viewModelScope.launch {
-            if (repository.createTask(task)) {
+            if (repository.editTask(task)) {
                 var task_to_update = tasks.find { oldtask -> oldtask.id == task.id }
                 task_to_update?.title = task.title
                 task_to_update?.description = task.description

@@ -14,8 +14,10 @@ class TaskAdapter(val tasks: List<Task>, private val onDeleteClickListener: (Tas
         fun bind(task:Task) {
             itemView.task_title.text = task.title
             itemView.task_description.text = task.description
+            itemView.task_edit.setOnClickListener{onEditClickListener(task)}
+            itemView.task_delete.setOnClickListener{onDeleteClickListener(task)}
         }
-        fun onEditClickListener(task: Task) {
+        private fun onEditClickListener(task: Task) {
             val intent = Intent(itemView.context, TaskFormActivity::class.java)
             intent.putExtra("id", task.id)
             intent.putExtra("title", task.title)
@@ -34,9 +36,5 @@ class TaskAdapter(val tasks: List<Task>, private val onDeleteClickListener: (Tas
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         holder.bind(tasks[position])
-        val buttonDelete : Button = holder.itemView.task_delete
-        buttonDelete.setOnClickListener {onDeleteClickListener(tasks[position])}
-        val buttonEdit : Button = holder.itemView.task_edit
-        buttonEdit.setOnClickListener {holder.onEditClickListener(tasks[position])}
     }
 }

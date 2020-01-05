@@ -13,11 +13,9 @@ import kotlinx.android.synthetic.main.task_fragment.view.*
 class TaskFragment : Fragment() {
 
     private val taskViewModel by lazy {
-        ViewModelProviders.of(this).get(TaskViewModel(taskAdapter)::class.java)
+        ViewModelProviders.of(this).get(TaskViewModel::class.java)
     }
     private val tasksRepository = TasksRepository()
-    private val tasks = mutableListOf<Task>()
-    private val taskAdapter = TaskAdapter(tasks)  {task : Task -> deleteTask(task)}
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,15 +23,8 @@ class TaskFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.task_fragment, container,false)
-        view.tasks_recycler_view.adapter = taskAdapter
+        view.tasks_recycler_view.adapter = taskViewModel.taskAdapter
         view.tasks_recycler_view.layoutManager = LinearLayoutManager(context)
-        tasksRepository.getTasks().observe(this, Observer {
-            if (it != null) {
-                tasks.clear()
-                tasks.addAll(it)
-                taskAdapter.notifyDataSetChanged()
-            }
-        })
         return view
     }
 

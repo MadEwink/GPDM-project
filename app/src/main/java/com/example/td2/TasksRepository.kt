@@ -34,7 +34,7 @@ class TasksRepository {
     }
 
     suspend fun editTask(task:Task) : Boolean {
-        val response = tasksService.updateTask(task)
+        val response = tasksService.updateTask(task.id,task)
         return response.isSuccessful
     }
 }

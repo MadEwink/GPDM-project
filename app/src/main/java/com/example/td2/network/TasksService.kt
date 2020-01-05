@@ -15,5 +15,5 @@ interface TasksService {
     suspend fun createTask(@Body task: Task): Response<Task>
 
     @PATCH("tasks/{id}")
-    suspend fun updateTask(@Body task: Task): Response<Task>
+    suspend fun updateTask(@Path("id") id: String, @Body task: Task): Response<Task>
 }
