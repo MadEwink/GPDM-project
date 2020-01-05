@@ -25,7 +25,7 @@ class HeaderFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         coroutineScope.launch {
-            val userInfo = Api.userService.getInfo().body()
+            val userInfo = Api.INSTANCE.userService.getInfo().body()
             var greetName = "Hi "+userInfo?.firstname+" "+userInfo?.lastname
             user_name.text =greetName
         }
